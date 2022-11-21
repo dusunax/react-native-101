@@ -20,4 +20,12 @@
 
 #### 3. 달력
 
-#### 3. 업다운 게임
+- 라이브러리 없이 만드는 달력 구현(작업 중)
+
+#### 4. 업다운 게임
+
+- 업다운 게임 예제
+- [짧은 후기(티스토리)](https://dusunax.tistory.com/entry/221120-%EC%97%85%EB%8B%A4%EC%9A%B4-%EA%B2%8C%EC%9E%84-%EA%B3%A0%EB%AF%BC-%ED%95%9C-%EC%8A%A4%ED%91%BC)
+
+<img src ="https://user-images.githubusercontent.com/94776135/202912086-1b84747c-cd66-4642-b197-4f562bd8f5b8.png" style="height: 400px;"> <img src ="https://user-images.githubusercontent.com/94776135/202912010-e2a3fcf2-7f20-47f8-94b9-ce10acd29de4.png" style="height: 400px;"> <img src ="https://user-images.githubusercontent.com/94776135/202911983-773b197d-a23c-4296-ad01-cf43ee36a134.png" style="height: 400px;">    
+<img src ="https://user-images.githubusercontent.com/94776135/202912015-013ec63b-ce94-4d5c-afde-ef5382809bfb.png" style="height: 400px;"> <img src ="https://user-images.githubusercontent.com/94776135/202912024-d7ddc1b9-daa9-4224-b759-791921c40d1f.png" style="height: 400px;">
