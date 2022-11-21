@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 
-import Calendar from "../components/Calendar";
+import Calendar from "../components/calendar/Calendar";
 
 export default function CalendarScreen() {
   return (

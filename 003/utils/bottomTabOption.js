@@ -1,5 +1,3 @@
-import { View } from "react-native";
-
 import { ROUTESLIST } from "./routeList";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
