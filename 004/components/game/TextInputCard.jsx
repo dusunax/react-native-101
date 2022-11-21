@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: "bold",
 
-    color: Colors.primary500,
+    color: Colors.primary300,
     borderBottomColor: Colors.primary300,
     borderBottomWidth: 2,
     textAlign: "center",

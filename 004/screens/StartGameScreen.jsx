@@ -52,9 +52,8 @@ export default function StartGameScreen({ onPickNumber }) {
     <View style={styles.rootContainer}>
       <Title>Guess My Number!</Title>
 
-      <InfoCard />
-
       <Title>🧮 숫자를 입력하세요! 🧮</Title>
+      <InfoCard />
 
       <TextInputCard
         onConfirmPress={confirmInputHandler}

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
 
     marginHorizontal: 24,
-    marginVertical: 8,
+    marginVertical: 6,
 
     alignItems: "center",
 
