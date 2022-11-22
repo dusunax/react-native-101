@@ -84,6 +84,18 @@ function isMonthMap(currentDate, dates) {
   return { monthStartMap, monthEndMap };
 }
 
+/** (rowIdx, cellIdx) => {isPrevMonth, isNextMonth} */
+const getIsMonth = (rowIdx, cellIdx, { monthStartMap, monthEndMap }) => {
+  // monthStartMap보다 row가 같거나 작고, cell이 작을 때
+  const isPrevMonth =
+    rowIdx - 1 <= monthStartMap.row && cellIdx < monthStartMap.cell;
+
+  // monthEndMap보다 row가 같거나 크고, cell이 클 때
+  const isNextMonth = rowIdx > monthEndMap.row && cellIdx > monthEndMap.cell;
+
+  return { isPrevMonth, isNextMonth };
+};
+
 export {
   getDatesHandler,
   getMonthYear,
@@ -91,4 +103,5 @@ export {
   setDates,
   getNestedDates,
   isMonthMap,
+  getIsMonth,
 };

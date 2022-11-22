@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { View, Pressable } from "react-native";
 
-import DayRow from "./DayRow";
 import CalendarTitle from "./Title";
-import Dates from "./Dates";
+import DayRow from "./DayRow";
+import DatesContainer from "./DatesContainer";
+
 import { getDatesHandler, isMonthMap } from "../../utils/calendar";
 
 export default function Calendar() {
@@ -12,11 +13,16 @@ export default function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(currentDate.getDate());
 
+  // mode => 0: monthly, 1: weekly
+  const [calenderType, setCalendarType] = useState(1);
+  const [selectedRow, setSelectedRow] = useState(null);
+
   const dates = getDatesHandler(currentDate, lang);
   let monthMap = isMonthMap(currentDate, dates);
 
-  function datePressHandler(cell) {
+  function datePressHandler(cell, rowIdx) {
     setSelectedDate(cell);
+    onSwitchMode(rowIdx - 1);
   }
 
   function monthChangeHandler(go) {
@@ -30,6 +36,16 @@ export default function Calendar() {
       );
     }
   }
+
+  const onSwitchMode = (rowIdx) => {
+    if (calenderType === 1) {
+      setRowSelect(rowIdx);
+    }
+  };
+
+  const setRowSelect = (rowIdx) => {
+    setSelectedRow(rowIdx);
+  };
 
   useEffect(() => {
     setSelectedDate(1);
@@ -47,34 +63,15 @@ export default function Calendar() {
       <Pressable>
         <DayRow lang={lang} />
 
-        <Dates
+        <DatesContainer
           dates={dates}
           selectedDate={selectedDate}
           onPress={datePressHandler}
           monthMap={monthMap}
+          calenderType={calenderType}
+          selectedRow={selectedRow}
         />
       </Pressable>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  calenderRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  days: {
-    flex: 1,
-    minHeight: 30,
-
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  dates: {
-    flex: 1,
-    minHeight: 50,
-
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
