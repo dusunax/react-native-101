@@ -9,6 +9,7 @@ import Animated, {
 import DateRow from "./DateRow";
 
 import { getNestedDates } from "../../utils/calendar";
+import { useEffect } from "react";
 
 export default function DayRow({
   dates,
@@ -54,9 +55,22 @@ export default function DayRow({
       }
     });
 
+  useEffect(() => {
+    idxMove.value = 0;
+  }, []);
+
+  const rStyle = useAnimatedStyle(() => {
+    let weekly = CType.value === "weekly";
+
+    return {
+      paddingBottom: 30,
+      maxHeight: weekly ? 80 : 1000,
+    };
+  });
+
   return (
     <GestureDetector gesture={gesture}>
-      <View>
+      <Animated.View style={rStyle}>
         {nestedDates.map((row, rowIdx) => {
           return (
             <View key={rowIdx + "row"}>
@@ -75,7 +89,7 @@ export default function DayRow({
             </View>
           );
         })}
-      </View>
+      </Animated.View>
     </GestureDetector>
   );
 }

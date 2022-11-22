@@ -26,7 +26,6 @@ export default function DayRow({
     let weekly = CType.value === "weekly";
 
     return {
-      backgroundColor: "#fff",
       flexDirection: "row",
       flexWrap: "wrap",
       transform: [

@@ -31,10 +31,7 @@ export default function CalendarScreen({ lang }) {
     })
     .onFinalize(() => {
       // if (pan down)
-      if (
-        offsetY.value < startY.value &&
-        Math.abs(offsetY.value - startY.value) > 20
-      ) {
+      if (offsetY.value < startY.value) {
         CType.value = "weekly";
       } else {
         CType.value = "monthly";
@@ -55,5 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
 
     flex: 1,
+
+    backgroundColor: "#fff",
   },
 });
