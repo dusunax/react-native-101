@@ -7,18 +7,21 @@ import DatesContainer from "./DatesContainer";
 
 import { getDatesHandler, isMonthMap } from "../../utils/calendar";
 
-export default function Calendar({ calenderType, lang, rStyle }) {
+export default function Calendar({ calenderType, lang, CType }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(currentDate.getDate());
 
-  const [selectedRow, setSelectedRow] = useState(null);
+  const [selectedRow, setSelectedRow] = useState(
+    Math.floor(new Date().getDate() / 7)
+  );
+  console.log(Math.floor(new Date().getDate() / 7));
 
   const dates = getDatesHandler(currentDate, lang);
   let monthMap = isMonthMap(currentDate, dates);
 
   function datePressHandler(cell, rowIdx) {
     setSelectedDate(cell);
-    onSwitchMode(rowIdx - 1);
+    setRowSelect(rowIdx - 1);
   }
 
   function monthChangeHandler(go) {
@@ -33,18 +36,12 @@ export default function Calendar({ calenderType, lang, rStyle }) {
     }
   }
 
-  const onSwitchMode = (rowIdx) => {
-    if (calenderType === 1) {
-      setRowSelect(rowIdx);
-    }
-  };
-
   const setRowSelect = (rowIdx) => {
     setSelectedRow(rowIdx);
   };
 
   useEffect(() => {
-    setSelectedDate(1);
+    setSelectedDate(currentDate.getDate());
   }, []);
 
   return (
@@ -66,7 +63,7 @@ export default function Calendar({ calenderType, lang, rStyle }) {
           monthMap={monthMap}
           calenderType={calenderType}
           selectedRow={selectedRow}
-          rStyle={rStyle}
+          CType={CType}
         />
       </View>
     </ScrollView>

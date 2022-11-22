@@ -17,44 +17,34 @@ export default function CalendarScreen({ lang }) {
   const startY = useSharedValue(0);
   const offsetY = useSharedValue(0);
   const scrolling = useSharedValue(false);
+  const CType = useSharedValue("monthly");
   const gesture = Gesture.Pan()
     .onStart((e) => {
       startY.value = e.y;
       scrolling.value = true;
     })
-    .onUpdate((e, context) => {
-      console.log(context);
+    .onUpdate((e) => {
       offsetY.value = e.y;
     })
-    .onEnd((e) => {
+    .onEnd(() => {
       scrolling.value = false;
-      console.log("end");
     })
-    .onFinalize(() => {});
-
-  const rStyle = useAnimatedStyle(() => {
-    if (scrolling.value) return;
-    let type = "monthly";
-
-    // if (pan down)
-    if (
-      offsetY.value > startY.value &&
-      Math.abs(offsetY.value - startY.value) > 100
-    ) {
-      type = "weekly";
-    } else {
-      type = "monthly";
-    }
-
-    return {
-      backgroundColor: type === "monthly" ? "#fff" : "#ddd",
-    };
-  });
+    .onFinalize(() => {
+      // if (pan down)
+      if (
+        offsetY.value < startY.value &&
+        Math.abs(offsetY.value - startY.value) > 20
+      ) {
+        CType.value = "weekly";
+      } else {
+        CType.value = "monthly";
+      }
+    });
 
   return (
     <GestureDetector gesture={gesture}>
-      <Animated.View style={[styles.container, rStyle]}>
-        <Calendar calenderType={calenderType} lang={lang} rStyle={rStyle} />
+      <Animated.View style={[styles.container]}>
+        <Calendar calenderType={calenderType} lang={lang} CType={CType} />
       </Animated.View>
     </GestureDetector>
   );

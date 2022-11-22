@@ -4,6 +4,7 @@ import Cell from "./Cell";
 
 import { Colors } from "../../constants/colors";
 import { getIsMonth } from "../../utils/calendar";
+import Animated from "react-native-reanimated";
 
 export default function DayRow({
   row,
@@ -12,11 +13,10 @@ export default function DayRow({
   onPress,
   monthMap,
   rowStyle,
-  rStyle,
 }) {
   return (
     <Pressable>
-      <View style={[styles.row, rowStyle]} key={rowIdx + "low"}>
+      <Animated.View style={rowStyle} key={rowIdx + "low"}>
         {row.map((cell, cellIdx) => {
           let style = [];
           let textStyle = [];
@@ -48,7 +48,7 @@ export default function DayRow({
             </Cell>
           );
         })}
-      </View>
+      </Animated.View>
     </Pressable>
   );
 }
