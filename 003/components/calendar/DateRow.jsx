@@ -10,6 +10,7 @@ import { getIsMonth } from "../../utils/calendar";
 export default function DayRow({
   row,
   rowIdx,
+  idxMove,
   onPress,
   monthMap,
   selectedDate,
@@ -29,7 +30,11 @@ export default function DayRow({
       flexDirection: "row",
       flexWrap: "wrap",
       transform: [
-        { translateX: weekly ? contentsArea * rowIdxOffset : 0 },
+        {
+          translateX: weekly
+            ? contentsArea * (rowIdxOffset + idxMove.value)
+            : 0,
+        },
         { translateY: weekly ? -50 * (rowIdx - 1) : 0 },
       ],
     };
