@@ -18,7 +18,7 @@
 
 <img src ="https://k.kakaocdn.net/dn/EF31F/btrRtdm6GHz/ZxBClfFjyuVsXELfMufIu0/img.png" style="height: 400px;"> <img src ="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2F1mqF8%2FbtrRsWeQE1C%2FokARczMGGQoiaK0DKSKIIk%2Fimg.png" style="height: 400px;"> <img src="https://user-images.githubusercontent.com/94776135/202433342-4ca706ed-53bc-4442-842c-bd872e191538.png" style="height: 400px;">
 
-#### 3. 달력
+#### 3. 달력 Monthly & Weekly
 
 - React Native로 달력 만들기
 - 제스처(Pan) / React Native Gesture Handler  
