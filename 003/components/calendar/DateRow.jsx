@@ -1,22 +1,43 @@
-import { StyleSheet, View, Pressable } from "react-native";
+import { StyleSheet, View, Pressable, Dimensions } from "react-native";
+
+import Animated, { useAnimatedStyle } from "react-native-reanimated";
 
 import Cell from "./Cell";
 
 import { Colors } from "../../constants/colors";
 import { getIsMonth } from "../../utils/calendar";
-import Animated from "react-native-reanimated";
 
 export default function DayRow({
   row,
   rowIdx,
-  selectedDate,
   onPress,
   monthMap,
-  rowStyle,
+  selectedDate,
+  selectedRow,
+  CType,
 }) {
+  const rowIdxOffset = rowIdx - selectedRow;
+
+  const { width: PAGE_WIDTH } = Dimensions.get("window");
+  const contentsArea = PAGE_WIDTH - 32;
+
+  const rStyle = useAnimatedStyle(() => {
+    let weekly = CType.value === "weekly";
+
+    return {
+      backgroundColor: "#fff",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      transform: [
+        { translateX: weekly ? contentsArea * rowIdxOffset : 0 },
+        { translateY: weekly ? -50 * (rowIdx - 1) : 0 },
+      ],
+    };
+  });
+
   return (
     <Pressable>
-      <Animated.View style={rowStyle} key={rowIdx + "low"}>
+      <Animated.View style={rStyle} key={rowIdx + "low"}>
         {row.map((cell, cellIdx) => {
           let style = [];
           let textStyle = [];

@@ -12,16 +12,15 @@ export default function Calendar({ calenderType, lang, CType }) {
   const [selectedDate, setSelectedDate] = useState(currentDate.getDate());
 
   const [selectedRow, setSelectedRow] = useState(
-    Math.floor(new Date().getDate() / 7)
+    Math.floor(new Date().getDate() / 7) + 1
   );
-  console.log(Math.floor(new Date().getDate() / 7));
 
   const dates = getDatesHandler(currentDate, lang);
   let monthMap = isMonthMap(currentDate, dates);
 
   function datePressHandler(cell, rowIdx) {
     setSelectedDate(cell);
-    setRowSelect(rowIdx - 1);
+    setRowSelect(rowIdx);
   }
 
   function monthChangeHandler(go) {
