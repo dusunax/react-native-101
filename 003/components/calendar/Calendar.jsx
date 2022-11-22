@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Pressable } from "react-native";
+import { View, ScrollView } from "react-native";
 
 import CalendarTitle from "./Title";
 import DayRow from "./DayRow";
@@ -7,14 +7,10 @@ import DatesContainer from "./DatesContainer";
 
 import { getDatesHandler, isMonthMap } from "../../utils/calendar";
 
-export default function Calendar() {
-  // 언어: eng, kor
-  const [lang, setLang] = useState("eng");
+export default function Calendar({ calenderType, lang, rStyle }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(currentDate.getDate());
 
-  // mode => 0: monthly, 1: weekly
-  const [calenderType, setCalendarType] = useState(1);
   const [selectedRow, setSelectedRow] = useState(null);
 
   const dates = getDatesHandler(currentDate, lang);
@@ -52,7 +48,7 @@ export default function Calendar() {
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       {/* month랑 year 전달 */}
       <CalendarTitle
         lang={lang}
@@ -60,7 +56,7 @@ export default function Calendar() {
         onPress={monthChangeHandler}
       />
 
-      <Pressable>
+      <View>
         <DayRow lang={lang} />
 
         <DatesContainer
@@ -70,8 +66,9 @@ export default function Calendar() {
           monthMap={monthMap}
           calenderType={calenderType}
           selectedRow={selectedRow}
+          rStyle={rStyle}
         />
-      </Pressable>
-    </View>
+      </View>
+    </ScrollView>
   );
 }

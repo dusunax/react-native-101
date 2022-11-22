@@ -18,7 +18,11 @@ function getMonthYear(currentDate) {
 
 /** (month, year, lang) => 언어에 맞는 string  */
 function getMonthYearString(month, year, lang) {
-  return `${selectLangMonth(month, lang)} ${year}`;
+  if (lang === "eng") {
+    return `${selectLangMonth(month, lang)} ${year}`;
+  } else {
+    return `${year} ${selectLangMonth(month, lang)}`;
+  }
 }
 
 /** (month, year) => 달력에 표시될 number[] */

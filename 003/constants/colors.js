@@ -7,6 +7,10 @@ const Colors = {
     sun: "red",
     sat: "blue",
   },
+  text: {
+    active: "#222",
+    unActive: "#aaa",
+  },
 };
 
 export { Colors };

@@ -1,5 +1,6 @@
 import { ROUTESLIST } from "./routeList";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Colors } from "../constants/colors";
 
 export const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focusd, color, size }) => {
@@ -15,6 +16,6 @@ export const screenOptions = ({ route }) => ({
 
     return <Ionicons name={iconName} size={size} color={color} />;
   },
-  tabBarActiveTintColor: "tomato",
-  tabBarInactiveTintColor: "gray",
+  tabBarActiveTintColor: Colors.text.active,
+  tabBarInactiveTintColor: Colors.text.unActive,
 });

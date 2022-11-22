@@ -12,9 +12,11 @@ export default function Cell({
       <Pressable
         onPress={onPress}
         style={({ pressed }) => (pressed ? [styles.pressed] : "")}
-        android_ripple={{
-          color: "#eee",
-        }}
+        android_ripple={
+          {
+            // color: "#eee",
+          }
+        }
       >
         <View style={[styles.innerCell]}>
           <View style={[style]}>
@@ -34,7 +36,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  innerCell: {
+  innerCell: {},
+  rippleEffect: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    overflow: "hidden",
+
     justifyContent: "center",
     alignItems: "center",
   },

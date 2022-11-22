@@ -6,7 +6,7 @@ import MonthButton from "../ui/MonthButton";
 import { getMonthYear, getMonthYearString } from "../../utils/calendar";
 
 export default function CalendarTitle({ currentDate, lang, onPress }) {
-  const monthYear = getMonthYearString(...getMonthYear(currentDate));
+  const monthYear = getMonthYearString(...getMonthYear(currentDate), lang);
 
   return (
     <View style={styles.calendarTitle}>

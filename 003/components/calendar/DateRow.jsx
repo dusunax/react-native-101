@@ -11,12 +11,9 @@ export default function DayRow({
   selectedDate,
   onPress,
   monthMap,
-  rowData,
+  rowStyle,
+  rStyle,
 }) {
-  let rowStyle = [];
-  rowData.on === "off" ? rowStyle.push(styles.unSelected) : "";
-  // console.log(rowData.on, [styles.row, rowStyle]);
-
   return (
     <Pressable>
       <View style={[styles.row, rowStyle]} key={rowIdx + "low"}>
@@ -74,11 +71,5 @@ const styles = StyleSheet.create({
   },
   isNotThisMonth: {
     color: "#aaa",
-  },
-  unSelected: {
-    backgroundColor: "#ddd",
-    // height: 0,
-
-    overflow: "hidden",
   },
 });
