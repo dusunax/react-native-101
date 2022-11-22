@@ -20,7 +20,11 @@
 
 #### 3. 달력
 
-- 라이브러리 없이 만드는 달력 구현(작업 중)
+- React Native로 달력 만들기
+- 제스처(Pan) / React Native Gesture Handler  
+- 후기 작성 중...
+
+<img src ="https://user-images.githubusercontent.com/94776135/203404462-9d9e60d4-c9f0-46ea-9226-b33800089de8.png" style="height: 400px;"> <img src ="https://user-images.githubusercontent.com/94776135/203404552-4eddbb53-960e-4d90-b6ea-4686dcdf1101.png" style="height: 400px;"> <img src="https://user-images.githubusercontent.com/94776135/203404617-0dd6a157-7ddb-47aa-8ead-b5107f6661a6.png" style="height: 400px;">
 
 #### 4. 업다운 게임
 
