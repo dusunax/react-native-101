@@ -70,20 +70,16 @@ function isMonthMap(currentDate, dates) {
   ).getDate();
 
   const indexOfOne = dates.indexOf(1);
-  const indexOfLast = dates.lastIndexOf(thisMonthEndAt);
-
-  console.log(thisMonthEndAt, indexOfOne, indexOfLast); //
+  const indexOfLast = indexOfOne + thisMonthEndAt - 1;
 
   const monthStartMap = {
-    row: +(indexOfOne / 7).toFixed(),
+    row: Math.floor(indexOfOne / 7),
     cell: indexOfOne % 7,
   };
   const monthEndMap = {
-    row: +(indexOfLast / 7).toFixed(),
+    row: Math.floor(indexOfLast / 7),
     cell: indexOfLast % 7,
   };
-
-  console.log(monthStartMap, monthEndMap); //
 
   return { monthStartMap, monthEndMap };
 }

@@ -16,7 +16,7 @@ export default function Button({ children, onPress }) {
         }
         onPress={pressHandler}
         android_ripple={{
-          color: Colors.accent,
+          color: Colors.active,
         }}
       >
         <View>

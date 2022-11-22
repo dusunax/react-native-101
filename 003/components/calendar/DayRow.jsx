@@ -11,12 +11,17 @@ export default function DayRow({ lang }) {
   return (
     <View style={styles.row}>
       {days.map((day, idx) => {
-        let currStyle = [styles.dayCell];
-        if (day === "Sun") currStyle.push(styles.sun);
-        if (day === "Sat") currStyle.push(styles.sat);
+        let textStyle = [];
+        if (day === "Sun") textStyle.push(styles.sun);
+        if (day === "Sat") textStyle.push(styles.sat);
 
         return (
-          <Cell key={day + idx} style={currStyle} onPress={null}>
+          <Cell
+            key={day + idx}
+            outerStyle={styles.dayCell}
+            textStyle={textStyle}
+            onPress={null}
+          >
             {day}
           </Cell>
         );

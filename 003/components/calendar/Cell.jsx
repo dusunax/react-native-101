@@ -1,8 +1,14 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
 
-export default function Cell({ children, style, onPress }) {
+export default function Cell({
+  children,
+  style,
+  textStyle,
+  outerStyle,
+  onPress,
+}) {
   return (
-    <View style={[styles.cellOuter, style]}>
+    <View style={[styles.cellOuter, outerStyle]}>
       <Pressable
         onPress={onPress}
         style={({ pressed }) => (pressed ? [styles.pressed] : "")}
@@ -10,8 +16,10 @@ export default function Cell({ children, style, onPress }) {
           color: "#eee",
         }}
       >
-        <View style={[styles.cell, style]}>
-          <Text style={[styles.cell, style]}>{children}</Text>
+        <View style={[styles.innerCell]}>
+          <View style={[style]}>
+            <Text style={[styles.cell, textStyle]}>{children}</Text>
+          </View>
         </View>
       </Pressable>
     </View>
@@ -21,11 +29,12 @@ export default function Cell({ children, style, onPress }) {
 const styles = StyleSheet.create({
   cellOuter: {
     flex: 1,
-  },
-  cell: {
     minHeight: 50,
-    lineHeight: 50,
 
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  innerCell: {
     justifyContent: "center",
     alignItems: "center",
   },
