@@ -1,6 +1,6 @@
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors } from "@/constants/colors";
+import { Colors } from "@/constants/color";
 
 export default function CommonLayout({
   children,
@@ -13,7 +13,7 @@ export default function CommonLayout({
       style={styles.rootScreen}
     >
       <ImageBackground
-        source={require("../assets/images/background.jpg")}
+        source={require("../../assets/images/background.jpg")}
         style={[styles.rootScreen, styles.paddingContainer]}
         resizeMode="cover"
         imageStyle={styles.backgroundImage}
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   },
   paddingContainer: {
     padding: 24,
+    paddingHorizontal: 36,
   },
   backgroundImage: {
     opacity: 0.7,

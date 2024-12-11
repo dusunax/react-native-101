@@ -1,8 +1,14 @@
-import { Colors } from "@/constants/colors";
-import { View, StyleSheet } from "react-native";
+import { Colors } from "@/constants/color";
+import { View, StyleSheet, ViewStyle, StyleProp } from "react-native";
 
-export default function Card({ children }: { children: React.ReactNode }) {
-  return <View style={styles.card}>{children}</View>;
+export default function Card({
+  children,
+  style,
+}: {
+  children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+}) {
+  return <View style={[styles.card, style]}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
