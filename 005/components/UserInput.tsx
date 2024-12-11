@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, StyleSheet,  TextInput, View } from "react-native";
 import PrimaryButton from "@/components/PrimaryButton";
 import { router } from "expo-router";
+import Title from "./Title";
+import Card from "./Card";
+import SubText from "./SubText";
+import { Colors } from "@/constants/colors";
 
 export default function UserInput() {
   const [enterNumber, setEnterNumber] = useState("");
@@ -36,9 +40,9 @@ export default function UserInput() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.title}>숫자를 맞춰보세요</Text>
-        <Text style={styles.text}>1부터 99까지의 숫자를 맞춰보세요.</Text>
+      <Card>
+        <Title>숫자를 맞춰보세요</Title>
+        <SubText>1부터 99까지의 숫자를 맞춰보세요.</SubText>
         <TextInput
           style={styles.input}
           maxLength={2}
@@ -56,7 +60,7 @@ export default function UserInput() {
             <PrimaryButton onPress={confirmInput}>시작</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -67,30 +71,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 30,
-  },
-  card: {
-    backgroundColor: "#FCFAEE",
-    width: "100%",
-    padding: 12,
-    borderRadius: 16,
-    elevation: 4,
-    shadowColor: "#1A1A1D",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 30,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#384B70",
-  },
-  text: {
-    fontSize: 10,
-    color: "#507687",
   },
   buttonsContainer: {
     width: "100%",
@@ -104,7 +84,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: 80,
-    borderColor: "#507687",
+    borderColor: Colors.primary400,
     borderBottomWidth: 2,
     paddingBottom: 6,
     textAlign: "center",
