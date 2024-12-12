@@ -31,7 +31,7 @@ export default function GamePlayScreen({
 }: {
   userNumber: number;
   setGameIsOver: (isOver: boolean) => void;
-  guessRoundUp: () => void;
+  guessRoundUp: (number: number) => void;
   gameIsOver: boolean;
 }) {
   const initialGuess = generateRandomNumberBetween(1, 100, userNumber);
@@ -60,7 +60,7 @@ export default function GamePlayScreen({
       currentGuess
     );
     setCurrentGuess(newGuess);
-    guessRoundUp();
+    guessRoundUp(newGuess);
   };
 
   useEffect(() => {

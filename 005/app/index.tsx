@@ -8,20 +8,20 @@ import GamePlayScreen from "@/screens/GamePlayScreen";
 export default function Index() {
   const [userNumber, setUserNumber] = useState<number | null>(null);
   const [gameIsOver, setGameIsOver] = useState(true);
-  const [guessRounds, setGuessRounds] = useState(0);
+  const [guessRounds, setGuessRounds] = useState<number[]>([]);
 
   const gameStartHandler = (number: number) => {
     setUserNumber(number);
     setGameIsOver(false);
   };
 
-  const guessRoundUp = () => {
-    setGuessRounds(guessRounds + 1);
+  const guessRoundUp = (number: number) => {
+    setGuessRounds((prev) => [...prev, number]);
   };
 
   const gameRestartHandler = () => {
     setUserNumber(null);
-    setGuessRounds(0);
+    setGuessRounds([]);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, FlatList } from "react-native";
 import Card from "@/components/ui/Card";
 import Title from "@/components/ui/Title";
 import SubText from "@/components/ui/SubText";
@@ -10,7 +10,7 @@ export default function GameOverScreen({
   userNumber,
   onRestart,
 }: {
-  guessRounds: number;
+  guessRounds: number[];
   userNumber: number;
   onRestart: () => void;
 }) {
@@ -23,12 +23,25 @@ export default function GameOverScreen({
           source={require("@/assets/images/star.png")}
         />
         <SubText style={styles.summaryText}>
-          당신이 입력한 숫자는 <Text style={styles.highlight}>{userNumber}</Text>{" "}
-          입니다.
+          당신이 입력한 숫자는{" "}
+          <Text style={styles.highlight}>{userNumber}</Text> 입니다.
         </SubText>
         <SubText style={styles.summaryText}>
-          총 <Text style={styles.highlight}>{guessRounds}</Text> 번만에 숫자를 찾아냈습니다.
+          총 <Text style={styles.highlight}>{guessRounds.length}</Text> 번만에
+          숫자를 찾아냈습니다.
         </SubText>
+        <View style={styles.guessRoundContainer}>
+          <FlatList
+            data={guessRounds}
+            renderItem={({ item, index }) => (
+              <SubText style={styles.guessRound}>
+                {index + 1}번째 예상 숫자:{" "}
+                <Text style={styles.highlight}>{item}</Text>
+              </SubText>
+            )}
+            keyExtractor={(item) => item.toString()}
+          />
+        </View>
       </View>
       <PrimaryButton onPress={onRestart}>다시 시작하기</PrimaryButton>
     </Card>
@@ -37,6 +50,9 @@ export default function GameOverScreen({
 
 const styles = StyleSheet.create({
   summaryContainer: {
+    width: "100%",
+    display: "flex",
+    alignItems:'center',
     marginVertical: 24,
   },
   summaryText: {
@@ -52,5 +68,26 @@ const styles = StyleSheet.create({
     height: 60,
     marginHorizontal: "auto",
     marginBottom: 24,
+  },
+  guessRoundContainer: {
+    width: "100%",
+    maxWidth: 200,
+    maxHeight: 120,
+    borderRadius: 10,
+    paddingVertical: 6,
+    marginTop: 8,
+    backgroundColor: Colors.primary100,
+  },
+  guessRoundList: {
+    paddingHorizontal: 12,
+    gap: 2,
+  },
+  guessRound: {
+    opacity: 0.8,
+    fontSize: 10,
+    height: 30,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
