@@ -1,5 +1,11 @@
 import { Colors } from "@/constants/color";
-import { View, StyleSheet, ViewStyle, StyleProp } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ViewStyle,
+  StyleProp,
+  useWindowDimensions,
+} from "react-native";
 
 export default function Card({
   children,
@@ -8,7 +14,15 @@ export default function Card({
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }) {
-  return <View style={[styles.card, style]}>{children}</View>;
+  const { height } = useWindowDimensions();
+
+  const cardStyle = {
+    width: height < 400 ? "80%" : "100%",
+    maxWidth: 600,
+    marginHorizontal: "auto",
+  } as ViewStyle;
+
+  return <View style={[styles.card, cardStyle, style]}>{children}</View>;
 }
 
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView } from "react-native";
 import GameOverScreen from "@/screens/GameOverScreen";
 import UserInputScreen from "@/screens/UserInputScreen";
 import CommonLayout from "@/components/layout/CommonLayout";

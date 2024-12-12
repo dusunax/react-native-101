@@ -1,5 +1,5 @@
 import { Colors } from "@/constants/color";
-import { View, StyleSheet, ViewStyle, StyleProp } from "react-native";
+import { View, StyleSheet, ViewStyle, StyleProp,Text } from "react-native";
 
 export default function NumberContainer({
   children,
@@ -8,20 +8,26 @@ export default function NumberContainer({
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }) {
-  return <View style={[styles.container, style]}>{children}</View>;
+  return (
+    <View style={[styles.container, style]}>
+      <Text style={styles.text}>{children}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     width: 80,
-    color: Colors.primary500,
     borderColor: Colors.primary400,
     borderBottomWidth: 2,
     paddingBottom: 6,
-    textAlign: "center",
-    fontSize: 48,
-    fontWeight: "bold",
     marginTop: 6,
     marginBottom: 24,
+  },
+  text: {
+    color: Colors.primary500,
+    fontSize: 48,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

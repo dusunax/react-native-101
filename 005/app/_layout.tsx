@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
-import { useColorScheme } from "react-native";
+import { StatusBar, useColorScheme } from "react-native";
 import { SplashScreen, Stack } from "expo-router";
 import { DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { ThemeProvider } from "@react-navigation/native";
+import { Colors } from "@/constants/color";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -26,6 +27,10 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="+not-found" />
       </Stack>
+      <StatusBar
+        barStyle= "light-content"
+        backgroundColor={Colors.tertiary}
+      />
     </ThemeProvider>
   );
 }

@@ -89,5 +89,6 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    textAlign: "center",
   },
 });

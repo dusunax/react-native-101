@@ -2,7 +2,7 @@ import Card from "@/components/ui/Card";
 import SubText from "@/components/ui/SubText";
 import Title from "@/components/ui/Title";
 import { useEffect, useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, useWindowDimensions, View } from "react-native";
 import NumberContainer from "@/components/game/NumberContainer";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { Ionicons } from "@expo/vector-icons";
@@ -36,6 +36,9 @@ export default function GamePlayScreen({
 }) {
   const initialGuess = generateRandomNumberBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState<number>(initialGuess);
+  const { height } = useWindowDimensions();
+  const buttonsContainerStyle =
+    height > 400 ? styles.buttonsContainer : styles.landscapeButtonsContainer;
 
   const nextGuess = (direction: "lower" | "higher") => {
     if (
@@ -60,7 +63,6 @@ export default function GamePlayScreen({
       currentGuess
     );
     setCurrentGuess(newGuess);
-    guessRoundUp(newGuess);
   };
 
   useEffect(() => {
@@ -69,6 +71,10 @@ export default function GamePlayScreen({
     }
   }, [currentGuess, userNumber]);
 
+  useEffect(() => {
+    guessRoundUp(currentGuess);
+  }, [currentGuess]);
+
   return (
     <Card>
       <Title>혹시 이 숫자인가요?</Title>
@@ -76,7 +82,7 @@ export default function GamePlayScreen({
       <NumberContainer>{currentGuess}</NumberContainer>
 
       <View
-        style={[styles.buttonsContainer, gameIsOver && styles.buttonDisabled]}
+        style={[buttonsContainerStyle, gameIsOver && styles.buttonDisabled]}
       >
         <PrimaryButton onPress={() => nextGuess("lower")}>
           <Ionicons name="caret-down" size={16} color="white" />
@@ -102,4 +108,17 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     pointerEvents: "none",
   },
+  landscapeButtonsContainer: {
+    position: "absolute",
+    top: "55%",
+    transform: [{ translateY: "-50%" }],
+    width: "100%",
+    paddingHorizontal: 24,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 100,
+    alignItems: "center",
+  },
 });
+
