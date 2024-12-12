@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import Card from "@/components/ui/Card";
 import Title from "@/components/ui/Title";
 import SubText from "@/components/ui/SubText";
@@ -18,12 +18,16 @@ export default function GameOverScreen({
     <Card>
       <Title>게임 종료</Title>
       <View style={styles.summaryContainer}>
+        <Image
+          style={styles.image}
+          source={require("@/assets/images/star.png")}
+        />
         <SubText style={styles.summaryText}>
-          입력한 숫자는 <Text style={styles.highlight}>{userNumber}</Text> 입니다.
+          당신이 입력한 숫자는 <Text style={styles.highlight}>{userNumber}</Text>{" "}
+          입니다.
         </SubText>
         <SubText style={styles.summaryText}>
-          총 <Text style={styles.highlight}>{guessRounds}</Text> 라운드를
-          진행했습니다.
+          총 <Text style={styles.highlight}>{guessRounds}</Text> 번만에 숫자를 찾아냈습니다.
         </SubText>
       </View>
       <PrimaryButton onPress={onRestart}>다시 시작하기</PrimaryButton>
@@ -42,5 +46,11 @@ const styles = StyleSheet.create({
   highlight: {
     color: Colors.primary500,
     fontWeight: "bold",
+  },
+  image: {
+    width: 60,
+    height: 60,
+    marginHorizontal: "auto",
+    marginBottom: 24,
   },
 });

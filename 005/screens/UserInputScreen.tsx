@@ -43,8 +43,8 @@ export default function UserInputCard({
 
   return (
     <Card>
-      <Title>숫자를 맞춰보세요</Title>
-      <SubText>1부터 99까지의 숫자를 맞춰보세요.</SubText>
+      <Title>숫자를 맞춰볼게요</Title>
+      <SubText>1부터 99까지의 숫자를 입력하세요.</SubText>
       <TextInput
         style={styles.input}
         maxLength={2}
