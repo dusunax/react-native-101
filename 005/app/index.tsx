@@ -4,6 +4,7 @@ import GameOverScreen from "@/screens/GameOverScreen";
 import UserInputScreen from "@/screens/UserInputScreen";
 import CommonLayout from "@/components/layout/CommonLayout";
 import GamePlayScreen from "@/screens/GamePlayScreen";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function Index() {
   const [userNumber, setUserNumber] = useState<number | null>(null);
@@ -44,6 +45,9 @@ export default function Index() {
             userNumber={userNumber}
             onRestart={gameRestartHandler}
           />
+        )}
+        {userNumber !== null && !gameIsOver && (
+          <PrimaryButton onPress={gameRestartHandler}>다시 시작</PrimaryButton>
         )}
       </View>
     </CommonLayout>
