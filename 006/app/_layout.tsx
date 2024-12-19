@@ -1,10 +1,11 @@
-import { CATEGORIES } from "@/data/dummy-data";
+import HomeButton from "@/components/HomeButton";
+import { FavoriteMealsProvider } from "@/context/FavoriteMealsContext";
 import { Stack } from "expo-router";
-import { StatusBar, View } from "react-native";
+import { StatusBar } from "react-native";
 
 export default function RootLayout() {
   return (
-    <>
+    <FavoriteMealsProvider>
       <Stack
         screenOptions={{
           contentStyle: { backgroundColor: "#222222" },
@@ -23,11 +24,17 @@ export default function RootLayout() {
         <Stack.Screen
           name="meals-overview"
           options={{
-            headerBackButtonDisplayMode: "default",
+            headerRight: () => <HomeButton style={{ marginRight: 20 }} />,
+          }}
+        />
+        <Stack.Screen
+          name="meal-detail"
+          options={{
+            headerRight: () => <HomeButton style={{ marginRight: 20 }} />,
           }}
         />
       </Stack>
       <StatusBar barStyle="light-content" backgroundColor="#222222" />
-    </>
+    </FavoriteMealsProvider>
   );
 }

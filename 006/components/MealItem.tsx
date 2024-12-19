@@ -6,20 +6,54 @@ import {
   Image,
   Pressable,
   Platform,
+  StyleProp,
+  ViewStyle,
 } from "react-native";
+import { router } from "expo-router";
+import Favorite from "./Favorite";
 
-export default function MealItem({ meal }: { meal: Meal }) {
+export default function MealItem({
+  meal,
+  style,
+  showImage = true,
+}: {
+  meal: Meal;
+  style?: StyleProp<ViewStyle>;
+  showImage?: boolean;
+}) {
+  const pressHandler = () => {
+    router.push(`/meal-detail?mealId=${meal.id}`);
+  };
+
   return (
-    <View style={styles.mealItem}>
+    <View style={[styles.mealItem, style]}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => [
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
+        onPress={pressHandler}
       >
         <View style={styles.innerContainer}>
-          <Image source={{ uri: meal.imageUrl }} style={styles.image} />
+          {showImage && (
+            <View style={{ position: "relative" }}>
+              <Image source={{ uri: meal.imageUrl }} style={styles.image} />
+              <Favorite
+                mealId={meal.id}
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 10,
+                  zIndex: 100,
+                  elevation: 10,
+                  backgroundColor: "#222",
+                  borderRadius: 100,
+                  padding: 5,
+                }}
+              />
+            </View>
+          )}
           <Text style={styles.title}>{meal.title}</Text>
           <View style={styles.details}>
             <Text style={styles.detailItem}>{meal.duration}m</Text>
