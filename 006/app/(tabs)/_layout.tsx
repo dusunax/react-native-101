@@ -22,15 +22,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="home" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="categories"
-        options={{
           title: "Categories",
           tabBarIcon: ({ color }) => (
             <Entypo name="cake" size={24} color={color} />
@@ -38,9 +29,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="meals-overview"
+        name="my-page"
         options={{
-          href: null,
+          title: "MyPage",
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="user" size={24} color={color} />
+          ),
         }}
       />
     </Tabs>
