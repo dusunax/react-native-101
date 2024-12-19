@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { CATEGORIES, MEALS } from "@/data/dummy-data";
@@ -18,7 +18,7 @@ export default function MealsOverviewScreen() {
     (category) => category.id === categoryId
   )?.title;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       title: categoryTitle,
     });
@@ -45,6 +45,6 @@ export default function MealsOverviewScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 24,
+    backgroundColor: "#222222",
   },
 });

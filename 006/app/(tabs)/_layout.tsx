@@ -7,6 +7,9 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#fa0",
+        tabBarInactiveTintColor: "#bbb",
+        tabBarActiveBackgroundColor: "#222222",
+        tabBarInactiveBackgroundColor: "#222222",
         headerShown: false,
         tabBarStyle: Platform.select({
           ios: {

@@ -1,5 +1,6 @@
+import { CATEGORIES } from "@/data/dummy-data";
 import { Stack } from "expo-router";
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 
 export default function RootLayout() {
   return (
@@ -7,17 +8,25 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           contentStyle: { backgroundColor: "#222222" },
+          headerStyle: { backgroundColor: "#222222" },
+          headerTintColor: "#fff",
         }}
       >
         <Stack.Screen
           name="(tabs)"
-          options={({ route }) => ({
-            title: route.params ? "Meals" : "Categories",
-          })}
+          options={{
+            title: "Categories",
+            headerShown: false,
+          }}
         />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen
+          name="meals-overview"
+          options={{
+            headerBackButtonDisplayMode: "default",
+          }}
+        />
       </Stack>
-      params?.categoryId
       <StatusBar barStyle="light-content" backgroundColor="#222222" />
     </>
   );
